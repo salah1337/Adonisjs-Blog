@@ -1,0 +1,20 @@
+@layout('main')
+
+@section('content')
+
+    <a href="/posts">Back to posts</a>
+    <hr>
+    <form action="/posts" method="post">
+        {{ csrfField() }}
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" class="form-control" placeholder="Post title">
+        </div>
+        <div class="form-group">
+            <label>Body</label>
+            <textarea type="text" name="body" class="form-control" placeholder="Post body">
+            </textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+@endsection
