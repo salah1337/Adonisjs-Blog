@@ -4,6 +4,17 @@
 
     <a href="/posts">Back to posts</a>
     <hr>
+    @if( old('notification') )
+    <div class="alert alert-success">
+      {{ old('notification') }}
+    </div>
+    @endif
     <h1>{{ post.title }}</h1>
     <p>{{ post.body }}</p>
+    <hr>
+    <a href="/posts/edit/{{ post.id }}" class="btn btn-dark d-block float-left">Edit</a>
+    <form action="{{ '/posts/' + post.id + '?_method=DELETE' }}" method="POST">
+    {{ csrfField() }}
+    <button class="btn btn-danger d-block float-right">Delete</button>
+    </form>
 @endsection

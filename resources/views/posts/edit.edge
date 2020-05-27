@@ -4,18 +4,18 @@
 
     <a href="/posts">Back to posts</a>
     <hr>
-    <h2>Make Post</h2>
-    <form action="/posts" method="post">
+    <h2>Edit Post</h2>
+    <form action="{{ '/posts/' + post.id + '?_method=PUT'}}" method="post">
         {{ csrfField() }}
         <div class="form-group">
             <label>Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Post title" value="{{ old('title', '') }}">
+            <input type="text" name="title" class="form-control" placeholder="Post title" value="{{ post.title }}">
             {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
         </div>
         <div class="form-group">
             <label>Body</label>
             <textarea type="text" name="body" class="form-control">
-                {{ old('body', '') }}
+                {{ post.body }}
             </textarea>
             {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
         </div>
