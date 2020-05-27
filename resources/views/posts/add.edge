@@ -8,12 +8,15 @@
         {{ csrfField() }}
         <div class="form-group">
             <label>Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Post title">
+            <input type="text" name="title" class="form-control" placeholder="Post title" value="{{ old('title', '') }}">
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
         </div>
         <div class="form-group">
             <label>Body</label>
-            <textarea type="text" name="body" class="form-control" placeholder="Post body">
+            <textarea type="text" name="body" class="form-control">
+                {{ old('body', '') }}
             </textarea>
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>

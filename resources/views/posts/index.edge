@@ -2,6 +2,11 @@
 
 @section('content')
 <h1>{{ title }}</h1>
+@if( old('notification') )
+  <div class="alert alert-success">
+      {{ old('notification') }}
+  </div>
+@endif
 <ul class="list-group">
     @each(post in posts)
         <a href="/posts/{{ post.id }}">
